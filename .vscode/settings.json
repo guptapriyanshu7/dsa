@@ -97,7 +97,7 @@
     "stack": "cpp"
   },
   "code-runner.executorMap": {
-    "cpp": "g++ $fileName && .\\a",
+    "cpp": "g++ \"$fileName\" && .\\a",
     "c": "g++ $fileName && .\\a"
   },
   "git.ignoreLimitWarning": true,
