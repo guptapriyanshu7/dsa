@@ -94,7 +94,9 @@
     "ios": "cpp",
     "locale": "cpp",
     "queue": "cpp",
-    "stack": "cpp"
+    "stack": "cpp",
+    "strstream": "cpp",
+    "coroutine": "cpp"
   },
   "code-runner.executorMap": {
     "cpp": "g++ \"leetcode\\$fileName\" && .\\a",

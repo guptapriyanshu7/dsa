@@ -93,16 +93,13 @@ void compute_edge_lengths(asciinode* node) {
         rprofile[i] = -null;
       compute_rprofile(node->left, 0, 0);
       hmin = node->left->height;
-    } else
-      hmin = 0;
+    } else hmin = 0;
     if (node->right != nullptr) {
       for (i = 0; i < node->right->height && i < MAX_HEIGHT; i++)
         lprofile[i] = null;
-
       compute_lprofile(node->right, 0, 0);
       hmin = min(node->right->height, hmin);
-    } else
-      hmin = 0;
+    } else hmin = 0;
     delta = 4;
     for (i = 0; i < hmin; i++)
       delta = max(delta, gap + 1 + rprofile[i] - lprofile[i]);
