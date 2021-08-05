@@ -13,11 +13,11 @@ int distance(vector<vector<int>>& adj, int s, int t) {
   d.assign(n, -1);
   q.push(s);
   used[s] = true;
-  while (!q.empty())   {
+  while (!q.empty()) {
     int v = q.front();
     q.pop();
-    for (int u : adj[v])     {
-      if (!used[u])       {
+    for (int u : adj[v]) {
+      if (!used[u]) {
         used[u] = true;
         q.push(u);
         d[u] = d[v] + 1;
@@ -31,7 +31,7 @@ int main() {
   int n, m;
   std::cin >> n >> m;
   vector<vector<int>> adj(n, vector<int>());
-  for (int i = 0; i < m; i++)   {
+  for (int i = 0; i < m; i++) {
     int x, y;
     std::cin >> x >> y;
     adj[x - 1].push_back(y - 1);

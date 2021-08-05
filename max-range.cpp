@@ -9,17 +9,17 @@ int solve(vector<int>& arr) {
   res[0] = { 0, -1 };
   for (size_t i = 1; i < arr.size(); i++) {
     if (arr[i] < arr[st.top()]) {
-      res[i] = { i, -1 };
       st.push(i);
-      res[i - 1].second = i;
+      res[i] = { i, -1 };
     } else {
       while (!st.empty() && arr[i] > arr[st.top()]) {
         auto p = st.top();
         st.pop();
         res[p].second = i - 1;
-        res[i].first = p;
+        res[i].first = res[p].first;
       }
       st.push(i);
+      res[i].second = -1;
     }
   }
   for (auto&& i : res) {
@@ -31,7 +31,15 @@ int solve(vector<int>& arr) {
 }
 
 int main() {
-  vector<int> arr{28, 13, 82, 62, 97, 49, 59, 54, 92, 21 };
-  solve(arr);
+  int t;
+  cin >> t;
+  while (t--) {
+    int size;
+    cin >> size;
+    vector<int> arr(size);
+    for (size_t i = 0; i < size; i++)
+      cin >> arr[i];
+    solve(arr);
+  };
   return 0;
 }
