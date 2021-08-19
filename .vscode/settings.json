@@ -99,8 +99,8 @@
     "coroutine": "cpp"
   },
   "code-runner.executorMap": {
-    // "cpp": "g++ \"leetcode\\$fileName\" && .\\a",
-    "cpp": "g++ \"$fileName\" && .\\a",
+    "cpp": "g++ \"leetcode\\$fileName\" && .\\a",
+    // "cpp": "g++ \"$fileName\" && .\\a",
     "c": "g++ $fileName && .\\a"
   },
   "git.ignoreLimitWarning": true,
