@@ -3,14 +3,23 @@
 using namespace std;
 
 int solve(vector<int>& nums) {
-  int p1, p2;
-  for (p1 = 0; p1 < nums.size() - 1; p1++) {
-    if (nums[p1] > nums[p1 + 1]) break;
+  int p1 = nums.size() - 1, p2 = 0;
+  stack<int> s;
+  for (int i = 0; i < nums.size(); i++) {
+    while (!s.empty() && nums[s.top()] > nums[i]) {
+      p1 = min(p1, s.top());
+      s.pop();
+    }
+    s.push(i);
   }
-  for (p2 = nums.size() - 1; p2 > 0; p2--) {
-    if (nums[p2] < nums[p2 - 1]) break;
+  while (!s.empty()) s.pop();
+  for (int i = nums.size() - 1; i >= 0; i--) {
+    while (!s.empty() && nums[s.top()] < nums[i]) {
+      p2 = max(p2, s.top());
+      s.pop();
+    }
+    s.push(i);
   }
-  cout << p1 << " " << p2;
   return p2 <= p1 ? 0 : p2 - p1 + 1;
 }
 
