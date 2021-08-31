@@ -1,4 +1,3 @@
-// print binary tree
 #include <bits/stdc++.h>
 
 #define MAX_HEIGHT 1000
@@ -175,55 +174,22 @@ void print_ascii_TreeNode(TreeNode* t) {
   free_ascii_TreeNode(proot);
 }
 
-TreeNode* TreeFromArray(vector<int>& array) {
-  int len = array.size();
-  if (len == 0)
-    return nullptr;
-  int nextItem = 0;
-  auto root = new TreeNode(array[nextItem++]);
-  queue<TreeNode*> q;
-  q.push(root);
-  while (q.size() > 0 && nextItem < len) {
-    auto current = q.front();
-    q.pop();
-    const int item = array[nextItem++];
-    if (item != null) {
-      auto node = new TreeNode(item);
-      current->left = node;
-      q.push(node);
-    }
-    if (nextItem < len) {
-      const int item = array[nextItem++];
-      if (item != null) {
-        auto node = new TreeNode(item);
-        current->right = node;
-        q.push(node);
-      }
-    }
-  }
+void helper(TreeNode*& root, vector<int>& nums, int l, int r) {
+  if (l > r) return;
+  int mid = l + (r - l) / 2;
+  if (root == nullptr) root = new TreeNode(nums[mid]);
+  helper(root->left, nums, l, mid - 1);
+  helper(root->right, nums, mid + 1, r);
+}
+
+TreeNode* solve(vector<int>& nums) {
+  TreeNode* root = nullptr;
+  helper(root, nums, 0, nums.size() - 1);
   return root;
 }
 
-void dfs(TreeNode* root, vector<int>& leaves) {
-  if (root == nullptr) return;
-  if (root->left == nullptr && root->right == nullptr)
-    leaves.push_back(root->val);
-  dfs(root->left, leaves);
-  dfs(root->right, leaves);
-}
-
-bool solve(TreeNode* root1, TreeNode* root2) {
-  vector<int> leaves1, leaves2;
-  dfs(root1, leaves1);
-  dfs(root2, leaves2);
-  return leaves1 == leaves2;
-}
-
 int main() {
-  vector<int> nums1{ 119,113,null,11,30,43,76,15,60,67,74 };
-  vector<int> nums2{ 11,69,60,115,66,15,60,67,74,null,76 };
-  print_ascii_TreeNode(TreeFromArray(nums1));
-  print_ascii_TreeNode(TreeFromArray(nums2));
-  cout << solve(TreeFromArray(nums1), TreeFromArray(nums2));
+  vector<int> nums{ -10,-3,0,5,9 };
+  print_ascii_TreeNode(solve(nums));
   return 0;
 }
