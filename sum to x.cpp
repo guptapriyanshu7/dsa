@@ -16,16 +16,12 @@ signed main() {
   for (size_t i = 0; i < n; i++) cin >> h[i];
   vector<int> primes(n + 1, true);
   primes[0] = primes[1] = false;
-  for (size_t i = 2; i * i <= n; i++) {
-    for (size_t j = i * i; j <= n; j += i) {
+  for (size_t i = 2; i * i <= n; i++)
+    for (size_t j = i * i; j <= n; j += i)
       primes[j] = false;
-    }
-  }
-  for (size_t i = 1; i <= n; i++) {
-    if (primes[i]) {
+  for (size_t i = 1; i <= n; i++)
+    if (primes[i])
       ph.push_back(h[i - 1]);
-    }
-  }
   while (q--) {
     int x;
     cin >> x;
