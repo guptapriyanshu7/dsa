@@ -39,6 +39,10 @@ ListNode* LinkedListFromArray(vector<int>& nums) {
 
 int main() {
   vector<int> nums{ 2,4,3 };
-  solve(LinkedListFromArray(nums), LinkedListFromArray(nums));
+  auto head = solve(LinkedListFromArray(nums), LinkedListFromArray(nums));
+  while (head) {
+    cout << head->val;
+    head = head->next;
+  }
   return 0;
 }

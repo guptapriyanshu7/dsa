@@ -1,19 +1,129 @@
+// {
+//   "version": "2.0.0",
+//   "tasks": [
+//     {
+//       "type": "shell",
+//       "label": "C/C++: g++.exe build active file",
+//       "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
+//       "args": ["-g", "${file}", "-o", "${workspaceFolder}\\a.exe"],
+//       "options": {
+//         "cwd": "${workspaceFolder}"
+//       },
+//       "problemMatcher": ["$gcc"],
+//       "group": {
+//         "kind": "build",
+//         "isDefault": true
+//       }
+//     }
+//   ]
+// }
+
 {
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "release cpp",
       "type": "shell",
-      "label": "C/C++: g++.exe build active file",
       "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
-      "args": ["-g", "${file}", "-o", "${workspaceFolder}\\a.exe"],
+      "args": [
+        "-O2",
+        "-g0",
+        "-std=c++17",
+        // Warnings Begin
+        "-Wall",
+        "-Wextra",
+        "-Wunused-variable",
+        "-Wshadow",
+        "-Wnon-virtual-dtor",
+        "-Wold-style-cast",
+        "-Wcast-align",
+        "-Wunused",
+        "-Woverloaded-virtual",
+        "-Wpedantic",
+        "-Wno-conversion",
+        "-Wnull-dereference",
+        "-Wdouble-promotion",
+        "-Wformat=2",
+        // GCC Only
+        "-Wmisleading-indentation",
+        "-Wduplicated-cond",
+        "-Wduplicated-branches",
+        "-Wlogical-op",
+        "-Wuseless-cast",
+        // Abselw
+        "-Wcast-qual",
+        "-Wno-missing-declarations",
+        "-Wvla",
+        "-Wwrite-strings",
+        // More GCC
+        "-Wduplicated-cond",
+        "-Wduplicated-branches",
+        "-Wlogical-op",
+        "-Wrestrict",
+        "-Wunreachable-code",
+        // Warnings End
+        "-o",
+        "${workspaceFolder}\\a.exe",
+        "${file}"
+      ],
+      "group": "build",
       "options": {
-        "cwd": "${workspaceFolder}"
+        "cwd": "${fileDirname}"
       },
-      "problemMatcher": ["$gcc"],
+      "problemMatcher": []
+    },
+    {
+      "label": "build and run cpp",
+      "type": "shell",
+      "command": "${workspaceFolder}\\a.exe",
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "dependsOn": "release cpp",
+      "problemMatcher": [],
       "group": {
         "kind": "build",
         "isDefault": true
       }
+    },
+    {
+      "label": "debug cpp",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-g3",
+        "-O0",
+        "-std=c++17",
+        "-o",
+        "${workspaceFolder}\\a.exe",
+        "${file}"
+      ],
+      "group": "build",
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "asan cpp",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-std=c++17",
+        "-ggdb",
+        "-o",
+        "a.exe",
+        "-fsanitize=address",
+        "-fno-omit-frame-pointer",
+        "${file}"
+      ],
+      "group": "build",
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": []
     }
   ]
 }
