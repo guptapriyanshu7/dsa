@@ -7,7 +7,7 @@ struct ListNode {
   ListNode* next;
   ListNode() : val(0), next(nullptr) {}
   ListNode(int x) : val(x), next(nullptr) {}
-  ListNode(int x, ListNode* next) : val(x), next(next) {}
+  ListNode(int x, ListNode* np) : val(x), next(np) {}
 };
 
 ListNode* solve(ListNode* l1, ListNode* l2) {

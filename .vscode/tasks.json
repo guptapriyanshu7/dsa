@@ -17,7 +17,6 @@
 //     }
 //   ]
 // }
-
 {
   // See https://go.microsoft.com/fwlink/?LinkId=733558
   // for the documentation about the tasks.json format
@@ -26,7 +25,8 @@
     {
       "label": "release cpp",
       "type": "shell",
-      "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
+      // "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
+      "command": "g++",
       "args": [
         "-O2",
         "-g0",
@@ -58,36 +58,38 @@
         "-Wvla",
         "-Wwrite-strings",
         // More GCC
-        "-Wduplicated-cond",
-        "-Wduplicated-branches",
-        "-Wlogical-op",
         "-Wrestrict",
         "-Wunreachable-code",
         // Warnings End
         "-o",
-        "${workspaceFolder}\\a.exe",
-        "${file}"
+        ".\\a.exe",
+        ".\\${relativeFile}",
+        "&&",
+        ".\\a.exe"
       ],
-      "group": "build",
-      "options": {
-        "cwd": "${fileDirname}"
-      },
-      "problemMatcher": []
-    },
-    {
-      "label": "build and run cpp",
-      "type": "shell",
-      "command": "${workspaceFolder}\\a.exe",
-      "options": {
-        "cwd": "${fileDirname}"
-      },
-      "dependsOn": "release cpp",
-      "problemMatcher": [],
       "group": {
         "kind": "build",
         "isDefault": true
-      }
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
     },
+    // {
+    //   "label": "build and run cpp",
+    //   "type": "shell",
+    //   "command": "${workspaceFolder}\\a.exe",
+    //   "options": {
+    //     "cwd": "${fileDirname}"
+    //   },
+    //   "dependsOn": "release cpp",
+    //   "problemMatcher": [],
+    //   "group": {
+    //     "kind": "build",
+    //     "isDefault": true
+    //   }
+    // },
     {
       "label": "debug cpp",
       "type": "shell",

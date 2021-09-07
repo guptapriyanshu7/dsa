@@ -2,12 +2,18 @@
   "configurations": [
     {
       "name": "GCC",
-      "includePath": ["${workspaceFolder}/**"],
-      "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
+      "includePath": [
+        "${workspaceFolder}/**"
+      ],
+      "defines": [
+        "_DEBUG",
+        "UNICODE",
+        "_UNICODE"
+      ],
       "compilerPath": "C:\\msys64\\mingw64\\bin\\g++.exe",
       "cStandard": "c11",
-      "cppStandard": "c++20",
-      "intelliSenseMode": "gcc-x86",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "linux-gcc-x64",
       "compilerArgs": [],
       "configurationProvider": "ms-vscode.cmake-tools"
     }
