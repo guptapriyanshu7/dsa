@@ -1,1 +1,1 @@
-clear()
+unms.find(req) != unms.end()
