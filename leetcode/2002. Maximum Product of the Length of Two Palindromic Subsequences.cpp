@@ -2,33 +2,49 @@
 
 using namespace std;
 
-int recurse(int l, int r, string s, vector<vector<int>>& dp) {
-  if (l == r) return 1;
-  if (l == r + 1) return 0;
-  if (dp[l][r] != -1) return dp[l][r];
-  return dp[l][r] = s[l] == s[r] ? 2 + recurse(l + 1, r - 1, s, dp)
-    : max(recurse(l, r - 1, s, dp), recurse(l + 1, r, s, dp));
+struct pair_hash {
+  size_t operator () (pair<string, string> const& pair) const {
+    return hash<string>()(pair.first + pair.second);
+  }
+};
+
+size_t result = 0;
+unordered_map<string, bool> dp;
+unordered_set<pair<string, string>, pair_hash> uns;
+
+bool isPalindrome(string s) {
+  if (dp.count(s)) return dp[s];
+  for (int i = 0; i < s.size() / 2; i++)
+    if (s[i] != s[s.size() - i - 1])
+      return dp[s] = false;
+  return dp[s] = true;
 }
 
-int lps(string s) {
-  auto n = s.size();
-  vector<vector<int>> dp(n, vector<int>(n, -1));
-  return recurse(0, n - 1, s, dp);
+void dfs(string& s, int i, string& s1, string& s2) {
+  if (uns.count({ s2, s1 })) return;
+  if (i == s.size()) {
+    if (s1.size() == 0 || s2.size() == 0) return;
+    cout << s1 << " " << s2 << "\n";
+    uns.insert({ s1, s2 });
+    if (isPalindrome(s1) && isPalindrome(s2))
+      result = max(result, s1.size() * s2.size());
+    return;
+  }
+  s1.push_back(s[i]);
+  dfs(s, i + 1, s1, s2);
+  s1.pop_back();
+
+  s2.push_back(s[i]);
+  dfs(s, i + 1, s1, s2);
+  s2.pop_back();
+
+  dfs(s, i + 1, s1, s2);
 }
 
 int solve(string s) {
-  int ans = 1, n = s.size();
-  for (size_t i = 1; i < 1 << (n - 1); i++) {
-    string s1 = "", s2 = "";
-    for (size_t j = 0; j < n; j++) {
-      if (i & (1 << j))
-        s1.push_back(s[j]);
-      else
-        s2.push_back(s[j]);
-    }
-    ans = max(ans, lps(s1) * lps(s2));
-  }
-  return ans;
+  string s1 = "", s2 = "";
+  dfs(s, 0, s1, s2);
+  return result;
 }
 
 int main() {
