@@ -13,7 +13,7 @@ int solve(int n) {
 }
 
 int main() {
-  int n = 116;
+  int n          = 116;
   int slowRunner = n;
   int fastRunner = solve(n);
   while (fastRunner != 1 && slowRunner != fastRunner) {

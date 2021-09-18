@@ -4,19 +4,16 @@
 int Sum(int a, int b);
 int Carry(int a, int b);
 
-int Sum(int a, int b)
-{
+int Sum(int a, int b) {
   int x = a ^ b;
   return x;
 }
-int Carry(int a, int b)
-{
+int Carry(int a, int b) {
   int x = a & b;
   return x;
 }
 
-int main()
-{
+int main() {
   int a, b;
   printf("Enter a : ");
   scanf("%d", &a);

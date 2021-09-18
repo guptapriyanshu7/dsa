@@ -2,9 +2,11 @@
 
 using namespace std;
 
-
 void recurse(int open, int close, int n, string s, vector<string>& ans) {
-  if (s.size() == 2 * n) { ans.push_back(s); return; }
+  if (s.size() == 2 * n) {
+    ans.push_back(s);
+    return;
+  }
   if (open < n) recurse(open + 1, close, n, s + "(", ans);
   if (close < open) recurse(open, close + 1, n, s + ")", ans);
 }

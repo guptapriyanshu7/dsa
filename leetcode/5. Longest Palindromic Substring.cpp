@@ -9,11 +9,11 @@ string solve(string s) {
   vector<vector<int>> C(n + 1, vector<int>(n + 1, 0));
   for (int i = 1; i <= n; i++) {
     for (int j = 1; j <= n; j++) {
-      if ((s[i - 1] == rev[j - 1])) {
+      if (s[i - 1] == rev[j - 1]) {
         C[i][j] = C[i - 1][j - 1] + 1;
         if (C[i][j] > maxlen && i - C[i][j] == n - j) {
           maxlen = C[i][j];
-          ind = i;
+          ind    = i;
         }
       }
     }

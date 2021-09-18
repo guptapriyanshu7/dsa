@@ -22,11 +22,10 @@ vector<vector<int>> solve(vector<int>& nums) {
 }
 
 int main() {
-  vector<int> nums{ -1,0,1,2,-1,-4 };
+  vector<int> nums{ -1, 0, 1, 2, -1, -4 };
   auto ans = solve(nums);
   for (size_t i = 0; i < ans.size(); i++) {
-    for (size_t j = 0; j < 3; j++)
-      cout << ans[i][j] << " ";
+    for (size_t j = 0; j < 3; j++) cout << ans[i][j] << " ";
     cout << "\n";
   }
   return 0;

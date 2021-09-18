@@ -9,7 +9,8 @@ string solve(vector<string>& nums) {
     for (size_t c = 0; c < min(comp.size(), ans.size()); c++) {
       if (ans[c] == comp[c]) {
         temp += ans[c];
-      } else break;
+      } else
+        break;
     }
     ans = temp;
   }
@@ -17,7 +18,7 @@ string solve(vector<string>& nums) {
 }
 
 int main() {
-  vector<string> nums{ "dog","racecar","car" };
+  vector<string> nums{ "dog", "racecar", "car" };
   cout << solve(nums);
   return 0;
 }

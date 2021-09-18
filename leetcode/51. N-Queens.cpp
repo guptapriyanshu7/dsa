@@ -8,8 +8,10 @@ void saveSolution(vector<vector<int>>& board, vector<vector<string>>& res) {
   for (int i = 0; i < N; i++) {
     string s = "";
     for (int j = 0; j < N; j++) {
-      if (board[i][j] == 0) s += ".";
-      else s += "Q";
+      if (board[i][j] == 0)
+        s += ".";
+      else
+        s += "Q";
     }
     sol.push_back(s);
   }
@@ -19,14 +21,11 @@ void saveSolution(vector<vector<int>>& board, vector<vector<string>>& res) {
 bool isSafe(vector<vector<int>>& board, int row, int col) {
   auto N = board.size();
   for (int i = 0; i < col; i++)
-    if (board[row][i])
-      return false;
+    if (board[row][i]) return false;
   for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--)
-    if (board[i][j])
-      return false;
+    if (board[i][j]) return false;
   for (int i = row + 1, j = col - 1; j >= 0 && i < N; i++, j--)
-    if (board[i][j])
-      return false;
+    if (board[i][j]) return false;
   return true;
 }
 

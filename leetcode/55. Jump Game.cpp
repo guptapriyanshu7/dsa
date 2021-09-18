@@ -21,7 +21,7 @@ bool solve(vector<int>& nums) {
 }
 
 int main() {
-  vector<int> nums{ 3,2,1,0,4 };
+  vector<int> nums{ 3, 2, 1, 0, 4 };
   cout << solve(nums);
   return 0;
 }

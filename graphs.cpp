@@ -1,8 +1,8 @@
+#include <algorithm>
 #include <iostream>
 #include <queue>
 #include <set>
 #include <tuple>
-#include <algorithm>
 
 using namespace std;
 using pii = pair<int, int>;
@@ -83,7 +83,7 @@ void dijkstra(int src, vector<pii> graph[], int V) {
 void bellmanFord(int src, pii edges[], vector<int> weights, int V, int E) {
   vector<int> dist(V, INT_MAX);
   dist[src] = 0;
-  int flag = 0;
+  int flag  = 0;
   for (int i = 0; i < V; i++) {
     for (int j = 0; j < E; j++) {
       if (dist[edges[j].first] != INT_MAX && dist[edges[j].first] + weights[j] < dist[edges[j].second]) {
@@ -138,9 +138,9 @@ void floydWarshall(vector<pii> graph[], int V) {
 
 void prim(vector<pii> graph[], int V) {
   int total_weight = 0;
-  vector<pii> min_e(V, { -1, INT_MAX });     // pair (parent, weight)
+  vector<pii> min_e(V, { -1, INT_MAX });  // pair (parent, weight)
   min_e[0].second = 0;
-  set<pii> q;                              // pair (weight, current vertex)
+  set<pii> q;  // pair (weight, current vertex)
   q.insert({ 0, 0 });
   vector<bool> selected(V, false);
   cout << '\n';
@@ -149,7 +149,7 @@ void prim(vector<pii> graph[], int V) {
       cout << "No MST!";
       return;
     }
-    int v = q.begin()->second;
+    int v       = q.begin()->second;
     selected[v] = true;
     total_weight += q.begin()->first;
     q.erase(q.begin());
@@ -170,7 +170,7 @@ vector<int> parent, depth;
 
 void make_set(int v) {
   parent[v] = v;
-  depth[v] = 0;
+  depth[v]  = 0;
 }
 
 int find_set(int v) {
@@ -202,8 +202,8 @@ void kruskal(pii e[], vector<int> weights, int V, int E) {
   vector<Edge> edges;
   for (size_t i = 0; i < E; i++) {
     Edge edge;
-    edge.u = e[i].first;
-    edge.v = e[i].second;
+    edge.u      = e[i].first;
+    edge.v      = e[i].second;
     edge.weight = weights[i];
     edges.push_back(edge);
   }
@@ -220,8 +220,10 @@ void kruskal(pii e[], vector<int> weights, int V, int E) {
       cost += e.weight;
       result.push_back(e);
       union_sets(e.u, e.v);
-      if (i + 1 == V - 1) break;
-      else i++;
+      if (i + 1 == V - 1)
+        break;
+      else
+        i++;
     }
   }
   cout << '\n';
@@ -236,7 +238,7 @@ int main() {
   // int V = 5, E = 7;
   // int V = 3, E = 3;
   vector<pii> graph[V];
-  pii edges[E] = { {0, 1}, {1, 3}, {0, 2}, {2, 1} };
+  pii edges[E] = { { 0, 1 }, { 1, 3 }, { 0, 2 }, { 2, 1 } };
   vector<int> weights{ 8, 5, 2, 1 };
   // pii edges[E] = {{0, 1}, {2, 0}, {1, 2}, {1, 3}, {1, 4}, {3, 2}, {4, 3}};
   // vector<int> weights{-1, 4, 3, 2, 2, 5, -3};
@@ -252,11 +254,11 @@ int main() {
     }
     cout << '\n';
   }
-  dijkstra(1, graph, V); // for undirected and directed graph
+  dijkstra(1, graph, V);                 // for undirected and directed graph
   bellmanFord(1, edges, weights, V, E);  // for directed graph, note we are not passing graph but edges and weights, i.e. it is always treated as directed
-  floydWarshall(graph, V);  // for directed and undirected graph with positive edges
-  prim(graph, V);  // undirected connected graph
-  kruskal(edges, weights, V, E);  // undirected connected graph
+  floydWarshall(graph, V);               // for directed and undirected graph with positive edges
+  prim(graph, V);                        // undirected connected graph
+  kruskal(edges, weights, V, E);         // undirected connected graph
   return 0;
 }
 

@@ -23,7 +23,7 @@ vector<vector<int>> solve(vector<int>& nums, int target) {
 }
 
 int main() {
-  vector<int> nums{ 2,3,6,7 };
+  vector<int> nums{ 2, 3, 6, 7 };
   auto grid = solve(nums, 7);
   for (size_t i = 0; i < grid.size(); i++) {
     for (size_t j = 0; j < grid[i].size(); j++)
@@ -32,7 +32,6 @@ int main() {
   }
   return 0;
 }
-
 
 /*
 2 3 6 7, 7
