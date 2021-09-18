@@ -34,14 +34,18 @@
 
 using namespace std;
 
-int solve(vector<int> &nums)
-{
+int recurse(vector<int>& weights, vector<int>& values, int i, int W, vector<vector<int>>& dp) {
+  if (i == weights.size() || W == 0) return 0;
+  if (dp[i][W] != -1) return dp[i][W];
+  if (W < weights[i]) return dp[i][W] = recurse(weights, values, i + 1, W, dp);
+  return dp[i][W] = max(values[i] + recurse(weights, values, i + 1, W - weights[i], dp),
+    recurse(weights, values, i + 1, W, dp));
 }
 
-int main()
-{
-  int weights[] = {10, 20, 30};
-  int values[] = {60, 100, 120};
-  solve(nums);
+int main() {
+  auto W = 50;
+  vector<int> weights{ 10, 20, 30 }, values{ 60, 100, 120 };
+  vector<vector<int>> dp(weights.size(), vector<int>(W + 1, -1));
+  cout << recurse(weights, values, 0, W, dp);
   return 0;
 }
