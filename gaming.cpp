@@ -1,27 +1,23 @@
 #include <iostream>
 
 class Entity {
-public:
-  Entity(int x, int y) :
-    m_x(x),
-    m_y(y) {
-  }
+  public:
+  Entity(int x, int y) : m_x(x), m_y(y) {}
   virtual ~Entity() = default;
 
   virtual void render_entity() const = 0;
 
   // More class methods to change Entity proprties
 
-protected:
+  protected:
   int m_x;
   int m_y;
 };
 
 class Triangle : public Entity {
-public:
-  Triangle(int x, int y, int z) :
-    Entity(x, y),
-    m_z(z) {
+  public:
+  Triangle(int x, int y, int z) : Entity(x, y),
+                                  m_z(z) {
   }
 
   void render_entity() const override {
@@ -29,7 +25,7 @@ public:
     std::cout << "RENDERING TRIANGLE\n";
   }
 
-protected:
+  protected:
   int m_z;
 
   // More properties defining a Triangle
@@ -39,10 +35,9 @@ protected:
 };
 
 class Bullet : public Entity {
-public:
-  Bullet(int x, int y, int v) :
-    Entity(x, y),
-    m_velocity(v) {
+  public:
+  Bullet(int x, int y, int v) : Entity(x, y),
+                                m_velocity(v) {
   }
 
   void render_entity() const override {
@@ -50,7 +45,7 @@ public:
     std::cout << "RENDERING BULLET\n";
   }
 
-protected:
+  protected:
   int m_velocity;
   // More properties defining a bullet
   // std::string shooter;
@@ -59,7 +54,7 @@ protected:
 };
 
 class Fire : public Entity {
-public:
+  public:
   Fire(int x, int y, int t) : Entity(x, y), m_temp(t) {}
 
   void render_entity() const override {
@@ -67,7 +62,7 @@ public:
     std::cout << "RENDERING FIRE PARTICLES\n";
   }
 
-protected:
+  protected:
   int m_temp;
   // More properties defining fire particles
 };
@@ -99,20 +94,20 @@ Entity* set_entity_type(int i)  // JUST A HELPER FUNCTION TO TEST, IN REAL CODE 
   // these instances and returns their addresses and manages deletion as well.
   // A well known Design pattern known as a Factory (I think.)
   switch (i) {
-  case 1:
-    e = new Triangle(1, 2, 3);
-    break;
-  case 2:
-    e = new Bullet(1, 2, 69);
-    break;
-  case 3:
-    e = new Fire(1, 2, 100);
-    break;
-  case 4:
-    return nullptr;
-  default:
-    std::cout << "Entity not yet handled\n";
-    break;
+    case 1:
+      e = new Triangle(1, 2, 3);
+      break;
+    case 2:
+      e = new Bullet(1, 2, 69);
+      break;
+    case 3:
+      e = new Fire(1, 2, 100);
+      break;
+    case 4:
+      return nullptr;
+    default:
+      std::cout << "Entity not yet handled\n";
+      break;
   }
 
   return e;
@@ -127,7 +122,7 @@ int main() {
 
     Entity* e = set_entity_type(i);
 
-    if (e)                 // Check nullptr
+    if (e)           // Check nullptr
       game_loop(e);  // This is the actual game loop, everything else before this is just to help test
     else
       return 0;

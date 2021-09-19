@@ -2,8 +2,10 @@
 
 class MaxThis {
   int a;
-public:
-  MaxThis(int x) : a(x) {};
+
+  public:
+  MaxThis(int x) : a(x) {}
+
   bool findMax(MaxThis& rhs) {
     return this->a > rhs.a;
   }

@@ -4,8 +4,9 @@ using namespace std;
 
 class BST {
   int data;
-  BST* left, * right;
-public:
+  BST *left, *right;
+
+  public:
   BST();
   BST(int);
   BST* Insert(BST*, int);
@@ -13,7 +14,7 @@ public:
   void Inorder(BST*);
 };
 
-BST::BST():data(0), left(nullptr), right(nullptr) {}
+BST::BST() : data(0), left(nullptr), right(nullptr) {}
 
 BST::BST(int value) : BST() {
   data = value;
@@ -41,8 +42,8 @@ void BST::Delete(BST*& root, int value) {
       root = nullptr;
     } else if (!root->left || !root->right) {
       BST* child = root->left ? root->left : root->right;
-      BST* curr = root;
-      root = child;
+      BST* curr  = root;
+      root       = child;
       delete curr;
       curr = nullptr;
     } else {
@@ -70,7 +71,7 @@ void BST::Inorder(BST* root) {
 }
 
 int main() {
-  BST bst, * root = nullptr;
+  BST bst, *root = nullptr;
   int keys[] = { 4, 2, 7, 5, 6, 1, 3 };
   for (int key : keys) {
     root = bst.Insert(root, key);

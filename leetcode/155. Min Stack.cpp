@@ -3,15 +3,14 @@
 using namespace std;
 
 class MinStack {
-private:
   struct Node {
     int val;
     int min;
     Node* next;
     Node(int val, int min, Node* next) : val(val), min(min), next(next) {}
-  }*head = nullptr;
+  }* head = nullptr;
 
-public:
+  public:
   void push(int x) {
     if (head == nullptr)
       head = new Node(x, x, nullptr);

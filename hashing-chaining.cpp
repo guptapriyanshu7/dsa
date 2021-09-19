@@ -5,20 +5,21 @@ using namespace std;
 
 class Hash {
   int BUCKETS;
-  list<int> *table;
+  list<int>* table;
+
   public:
-    Hash(int);
-    void insertItem(int);
-    void deleteItem(int);
-    void displayHash();
-    int hashFunction(int x) {
-      return (x % BUCKETS);
-    }
+  Hash(int);
+  void insertItem(int);
+  void deleteItem(int);
+  void displayHash();
+  int hashFunction(int x) {
+    return (x % BUCKETS);
+  }
 };
 
 Hash::Hash(int buckets) {
   BUCKETS = buckets;
-  table = new list<int>[BUCKETS];    // 7 lists, table is pointer to the first list
+  table   = new list<int>[BUCKETS];  // 7 lists, table is pointer to the first list
 }
 
 void Hash::insertItem(int value) {
@@ -28,9 +29,9 @@ void Hash::insertItem(int value) {
 
 void Hash::deleteItem(int value) {
   int index = hashFunction(value);
-  list <int>::iterator i;
+  list<int>::iterator i;
   for (i = table[index].begin(); i != table[index].end(); i++) {
-    if(*i == value) {
+    if (*i == value) {
       table[index].erase(i);
       return;
     }
@@ -51,7 +52,7 @@ void Hash::displayHash() {
 
 int main() {
   int a[] = { 15, 11, 27, 8, 12, 6, 4, 44, 34, 3, 5, 56 };
-  int n = sizeof(a)/sizeof(a[0]);
+  int n   = sizeof(a) / sizeof(a[0]);
   Hash h(7);
   for (int i = 0; i < n; i++)
     h.insertItem(a[i]);

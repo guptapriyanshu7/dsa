@@ -1,11 +1,12 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
 class simpleCalculator {
-protected:
+  protected:
   int a, b;
-public:
+
+  public:
   void enter() {
     cout << "Enter values for simple calculator: ";
     cin >> a;
@@ -20,9 +21,10 @@ public:
 };
 
 class scientificCalculator {
-protected:
+  protected:
   int c;
-public:
+
+  public:
   void enter() {
     cout << "Enter value for scientific calculator: ";
     cin >> c;
@@ -36,7 +38,7 @@ public:
 };
 
 class hybridCalculator : public simpleCalculator, public scientificCalculator {
-public:
+  public:
   void hcalc() {
     scalc();
     sCcalc();

@@ -3,9 +3,9 @@
 using namespace std;
 
 struct Node {
-  Node* parent = nullptr;
+  Node* parent  = nullptr;
   bool isLocked = false;
-  int user = 0;
+  int user      = 0;
   vector<Node*> ch;
 };
 
@@ -19,7 +19,7 @@ class LockingTree {
 
   void unlockDescendents(Node& node) {
     for (auto&& x : node.ch) {
-      x->user = 0;
+      x->user     = 0;
       x->isLocked = false;
       unlockDescendents(*x);
     }
@@ -32,7 +32,7 @@ class LockingTree {
     return false;
   }
 
-public:
+  public:
   LockingTree(vector<int>& parent) {
     lockTree.resize(parent.size());
     for (size_t i = 1; i < parent.size(); i++) {
@@ -43,7 +43,7 @@ public:
 
   bool lock(int num, int user) {
     if (!lockTree[num].isLocked) {
-      lockTree[num].user = user;
+      lockTree[num].user            = user;
       return lockTree[num].isLocked = true;
     }
     return false;
@@ -51,7 +51,7 @@ public:
 
   bool unlock(int num, int user) {
     if (lockTree[num].isLocked && lockTree[num].user == user) {
-      lockTree[num].user = 0;
+      lockTree[num].user     = 0;
       lockTree[num].isLocked = false;
       return true;
     }
@@ -73,12 +73,12 @@ public:
 int main() {
   vector<int> nums{ -1, 0, 0, 1, 1, 2, 2 };
   LockingTree* obj = new LockingTree(nums);
-  bool param_1 = obj->lock(2, 2);
-  bool param_2 = obj->unlock(2, 3);
-  bool param_3 = obj->unlock(2, 2);
-  bool param_4 = obj->lock(4, 5);
-  bool param_5 = obj->upgrade(0, 1);
-  bool param_6 = obj->lock(0, 1);
+  bool param_1     = obj->lock(2, 2);
+  bool param_2     = obj->unlock(2, 3);
+  bool param_3     = obj->unlock(2, 2);
+  bool param_4     = obj->lock(4, 5);
+  bool param_5     = obj->upgrade(0, 1);
+  bool param_6     = obj->lock(0, 1);
   cout << param_1 << param_2 << param_3 << param_4 << param_5 << param_6;
   return 0;
 }
