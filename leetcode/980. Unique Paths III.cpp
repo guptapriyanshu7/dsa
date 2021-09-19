@@ -19,7 +19,7 @@ void solve(vector<vector<int>>& grid, int row, int col, int empty, int& c) {
 }
 
 int main() {
-  vector<vector<int>> grid{ {1,0,0,0},{0,0,0,0},{0,0,2,-1} };
+  vector<vector<int>> grid{ { 1, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 2, -1 } };
   int x, y;
   auto empty = 1, c = 0;
   for (size_t i = 0; i < grid.size(); i++) {

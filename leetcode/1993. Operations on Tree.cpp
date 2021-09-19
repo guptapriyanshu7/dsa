@@ -18,7 +18,7 @@ class LockingTree {
   }
 
   void unlockDescendents(Node& node) {
-    for (auto&& x : node.ch) {
+    for (auto&& x: node.ch) {
       x->user     = 0;
       x->isLocked = false;
       unlockDescendents(*x);
@@ -26,7 +26,7 @@ class LockingTree {
   }
 
   bool checkDescendents(Node& node) {
-    for (auto&& x : node.ch) {
+    for (auto&& x: node.ch) {
       if (x->isLocked || checkDescendents(*x)) return true;
     }
     return false;

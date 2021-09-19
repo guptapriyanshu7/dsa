@@ -1,6 +1,6 @@
 #include <iostream>
-#include <vector>
 #include <queue>
+#include <vector>
 
 using std::pair;
 using std::priority_queue;
@@ -28,7 +28,7 @@ int dijkstra(vector<vector<pair<int, int>>>& adj, int s, int t) {
 
     u[v] = true;
     for (auto edge : adj[v]) {
-      int to = edge.first;
+      int to  = edge.first;
       int len = edge.second;
 
       if (d[v] + len < d[to]) {
