@@ -5,7 +5,8 @@ using namespace std;
 class Test {
   int x;
   int& ref;
-public:
+
+  public:
   Test(int i) : x(i), ref(x) {}
   void print() { cout << ref; }
   void setX(int i) { x = i; }

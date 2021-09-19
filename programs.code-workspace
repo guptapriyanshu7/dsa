@@ -125,7 +125,7 @@
     ],
     "cpp-check-lint.cppcheck.--onsave": true,
     // Cpplint
-    "cpp-check-lint.cpplint.--enable": true,
+    "cpp-check-lint.cpplint.--enable": false,
     // "cpp-check-lint.cpplint.--filter=": "-whitespace/comma, -whitespace/forcolon, -whitespace/ending_newline, -legal, -whitespace/braces, -whitespace/indent, -whitespace/newline, -build/namespace, -build/c++11, -build/include_subdir, -build/include_order, -build/header_guard, -readability/alt_tokens, -readability/casting, -runtime/references",
     "cpp-check-lint.cpplint.--filter=": "-whitespace/forcolon, -whitespace/ending_newline, -legal/copyright",
     "cpp-check-lint.cpplint.--linelength=": 120,
@@ -133,5 +133,14 @@
     "cpp-check-lint.cpplint.--onsave": true,
     // Clang
     "clangd.checkUpdates": true,
+    // cpplint
+    "cpplint.cpplintPath": "C:\\msys64\\mingw64\\bin\\cpplint.exe",
+    "cpplint.filters": [
+      "-legal/copyright",
+      "-whitespace/ending_newline",
+      "-whitespace/forcolon",
+      "-build/namespaces",
+    ],
+    "cpplint.lineLength": 120,
   }
 }
