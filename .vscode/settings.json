@@ -10,5 +10,7 @@
   "python.linting.enabled": true,
   "C_Cpp.errorSquiggles": "Enabled",
   "python.formatting.provider": "none",
-  "cmake.configureOnOpen": false
+  "cmake.configureOnOpen": false,
+  "lldb.displayFormat": "auto",
+  "lldb.dereferencePointers": true
 }

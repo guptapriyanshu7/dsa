@@ -99,12 +99,12 @@
         "-O0",
         "-std=c++17",
         "-o",
-        "${workspaceFolder}\\a.exe",
-        "${file}"
+        ".\\a.exe",
+        ".\\${relativeFile}"
       ],
       "group": "build",
       "options": {
-        "cwd": "${fileDirname}"
+        "cwd": "${workspaceFolder}"
       },
       "problemMatcher": []
     },
