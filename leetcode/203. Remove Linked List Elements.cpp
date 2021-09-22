@@ -11,28 +11,30 @@ struct ListNode {
 };
 
 ListNode* solve(ListNode* head, int val) {
-  auto temp = head;
+  auto* temp = head;
   while (temp != nullptr) {
     if (temp->val == val) {
       head = temp->next;
       delete temp;
       temp = head;
     } else if (temp->next != nullptr && temp->next->val == val) {
-      auto savePointer = temp->next->next;
+      auto* save_pointer = temp->next->next;
       delete temp->next;
-      temp->next = savePointer;
-    } else
+      temp->next = save_pointer;
+    } else {
       temp = temp->next;
+    }
   }
   return head;
 }
 
-ListNode* LinkedListFromArray(vector<int>& nums) {
-  int len = nums.size();
+ListNode* LinkedListFromArray(const vector<int>& nums) {
+  auto len = nums.size();
   if (len == 0) return nullptr;
-  auto head = new ListNode(nums[0]), temp = head;
-  for (int i = 1; i < len; i++) {
-    auto node  = new ListNode(nums[i]);
+  auto* head = new ListNode(nums[0]);
+  auto* temp = head;
+  for (size_t i = 1; i < len; i++) {
+    auto* node = new ListNode(nums[i]);
     temp->next = node;
     temp       = node;
   }
@@ -41,7 +43,7 @@ ListNode* LinkedListFromArray(vector<int>& nums) {
 
 int main() {
   vector<int> nums{ 6, 6, 3, 4, 5, 6 };
-  auto i = solve(LinkedListFromArray(nums), 6);
+  auto* i = solve(LinkedListFromArray(nums), 6);
   while (i != nullptr) {
     cout << i->val << " ";
     i = i->next;

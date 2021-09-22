@@ -2,7 +2,7 @@
   "code-runner.executorMap": {
     // "cpp": "g++ $fullFileName -O2 -g0 -std=c++17 -Wall -Wextra -Wunused-variable -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wpedantic -Wno-conversion -Wnull-dereference -Wdouble-promotion -Wformat=2 -Wmisleading-indentation -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wuseless-cast -Wcast-qual -Wno-missing-declarations -Wvla -Wwrite-strings -Wrestrict -Wunreachable-code && .\\a",
     // "cpp": "wsl g++ -ggdb -fsanitize='address,undefined,leak' -fno-omit-frame-pointer $fullFileName && wsl ./a.out",
-    "cpp": "time g++ -ggdb -fsanitize=address,undefined,leak -fno-omit-frame-pointer $fullFileName && ./a.out",
+    "cpp": "g++ -ggdb -fsanitize=address,undefined,leak -fno-omit-frame-pointer $fullFileName && ./a.out",
     "c": "g++ $fileName && .\\a"
   },
   "code-runner.enableAppInsights": false,
