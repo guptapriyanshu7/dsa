@@ -15,5 +15,5 @@
   "python.formatting.provider": "none",
   "cmake.configureOnOpen": false,
   "lldb.displayFormat": "auto",
-  "lldb.dereferencePointers": true
+  "lldb.dereferencePointers": true,
 }
