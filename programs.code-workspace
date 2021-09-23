@@ -142,5 +142,6 @@
       "-build/namespaces",
     ],
     "cpplint.lineLength": 120,
+    "editor.minimap.enabled": false,
   }
 }
