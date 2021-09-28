@@ -26,10 +26,10 @@ CompileFlags:
     - "-Wrestrict"
     - "-Wunreachable-code"
     - "-pedantic-errors"
-    - "-fsanitize=address,undefinedo"
+    - "-fsanitize=address,undefined,leak"
     - "-fno-omit-frame-pointer"
     - "-std=c++17"
-    - "--target=x86_64-pc-windows-gnu"
+    - "--target=x86_64-pc-linux-gnu"
 Diagnostics:
   ClangTidy:
     Add:
@@ -86,3 +86,5 @@ Diagnostics:
       readability-identifier-naming.EnumCase: CamelCase
       readability-identifier-naming.EnumConstantCase: CamelCase
       readability-identifier-naming.UnionCase: CamelCase
+
+# ~/.config/Code\ -\ OSS/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install

@@ -133,8 +133,6 @@
     "cpp-check-lint.cpplint.--onsave": true,
     // Clang
     "clangd.checkUpdates": true,
-    // cpplint
-    "cpplint.cpplintPath": "C:\\msys64\\mingw64\\bin\\cpplint.exe",
     "cpplint.filters": [
       "-legal/copyright",
       "-whitespace/ending_newline",
@@ -143,5 +141,7 @@
     ],
     "cpplint.lineLength": 120,
     "editor.minimap.enabled": false,
+    "cpplint.cpplintPath": "/usr/bin/cpplint",
+    "editor.fontSize": 15,
   }
 }

@@ -42,7 +42,7 @@ KeepEmptyLinesAtTheStartOfBlocks: true
 AllowShortBlocksOnASingleLine: true
 AllowShortFunctionsOnASingleLine: true
 ConstructorInitializerAllOnOneLineOrOnePerLine: true
-AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+# AllowShortIfStatementsOnASingleLine: AllIfsAndElse
 
 # Brace Breaks
 BreakBeforeBraces: Custom
@@ -75,7 +75,7 @@ AlignConsecutiveMacros: AcrossEmptyLinesAndComments
 # Spaces
 SpaceAfterTemplateKeyword: false
 
-EmptyLineAfterAccessModifier: Never
+# EmptyLineAfterAccessModifier: Never
 EmptyLineBeforeAccessModifier: Always
 
 Cpp11BracedListStyle: false

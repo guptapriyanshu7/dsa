@@ -14,9 +14,11 @@ class Entity {
   Entity() {
     cout << "Entity created\n";
   }
+
   void print() {
     cout << "Print Called\n";
   }
+
   ~Entity() {
     cout << "Entity deleted\n";
   }

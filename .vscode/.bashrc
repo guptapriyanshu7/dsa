@@ -130,7 +130,7 @@ source <(kubectl completion bash)
 
 new_line_ps1() {
   local _ y x _
-  local LIGHT_YELLOW="\001\033[1;93m\002"
+#   local LIGHT_YELLOW="\001\033[1;93m\002"
   local     RESET="\001\e[0m\002"
 
   IFS='[;' read -p $'\e[6n' -d R -rs _ y x _

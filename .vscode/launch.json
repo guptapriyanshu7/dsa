@@ -30,7 +30,7 @@
       "name": "LLDB Launch",
       "type": "lldb",
       "request": "launch",
-      "program": ".\\a.exe",
+      "program": "./a.out",
       // "args": [],
       // "stopAtEntry": true,
       "cwd": "${workspaceFolder}",

@@ -38,6 +38,7 @@ ListNode* LinkedListFromArray(vector<int>& nums) {
 }
 
 int main() {
+  int i;
   vector<int> nums{ 2, 4, 3 };
   auto head = solve(LinkedListFromArray(nums), LinkedListFromArray(nums));
   while (head) {
