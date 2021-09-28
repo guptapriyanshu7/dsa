@@ -114,8 +114,8 @@
       "args": [
         "-std=c++17",
         "-ggdb",
-        "-o",
-        "./a.out",
+        // "-o",
+        // "./a.out",
         "-fsanitize=address",
         "-fno-omit-frame-pointer",
         "./${relativeFile}"

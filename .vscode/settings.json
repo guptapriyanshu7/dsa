@@ -6,7 +6,6 @@
     "c": "gcc $fileName && ./a.out"
   },
   "code-runner.enableAppInsights": false,
-  "code-runner.terminalRoot": "/mnt/",
   "git.ignoreLimitWarning": true,
   "C_Cpp.dimInactiveRegions": true,
   "python.linting.pylintEnabled": true,

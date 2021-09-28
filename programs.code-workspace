@@ -143,5 +143,6 @@
     "editor.minimap.enabled": false,
     "cpplint.cpplintPath": "/usr/bin/cpplint",
     "editor.fontSize": 15,
+    "clangd.path": "/home/priyanshu/.config/Code - OSS/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/bin/clangd",
   }
 }

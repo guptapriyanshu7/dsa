@@ -13,7 +13,7 @@ struct ListNode {
 ListNode* solve(ListNode* l1, ListNode* l2) {
   auto carry = 0;
   auto head  = new ListNode();
-  auto temp  = head;
+  auto* temp = head;
   while (l1 || l2 || carry) {
     int s = carry;
     if (l1) s += l1->val, l1 = l1->next;
@@ -30,7 +30,7 @@ ListNode* LinkedListFromArray(vector<int>& nums) {
   if (len == 0) return nullptr;
   auto head = new ListNode(nums[0]), temp = head;
   for (int i = 1; i < len; i++) {
-    auto node  = new ListNode(nums[i]);
+    auto* node = new ListNode(nums[i]);
     temp->next = node;
     temp       = node;
   }
@@ -38,9 +38,8 @@ ListNode* LinkedListFromArray(vector<int>& nums) {
 }
 
 int main() {
-  int i;
   vector<int> nums{ 2, 4, 3 };
-  auto head = solve(LinkedListFromArray(nums), LinkedListFromArray(nums));
+  auto* head = solve(LinkedListFromArray(nums), LinkedListFromArray(nums));
   while (head) {
     cout << head->val;
     head = head->next;
