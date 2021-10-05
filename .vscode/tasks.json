@@ -66,10 +66,7 @@
         "&&",
         "./a.out"
       ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
+      "group": "build",
       "options": {
         "cwd": "${workspaceFolder}"
       },
@@ -108,19 +105,23 @@
       "problemMatcher": []
     },
     {
-      "label": "asan cpp",
+      "label": "run cpp",
       "type": "shell",
       "command": "g++",
       "args": [
-        "-std=c++17",
         "-ggdb",
         // "-o",
         // "./a.out",
-        "-fsanitize=address",
+        "-fsanitize=address,undefined,leak",
         "-fno-omit-frame-pointer",
-        "./${relativeFile}"
+        "./${relativeFile}",
+        "&&",
+        "./a.out"
       ],
-      "group": "build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
       "options": {
         "cwd": "${workspaceFolder}"
       },
