@@ -1,0 +1,66 @@
+---------------  C++  ---------------
+
+command -> action -> output
+
+
+## 1 ##
+
+g++ -c main.cpp -> compiles main.cpp -> main.o object file
+
+NOTE: 
+
+- To include external header files out of standard path (/usr/include/) use:
+g++ -c main.cpp -I<ext-lib-install-path>/include
+
+- The include folder contains the .hpp files, which are the definitions for
+the classes, functions, etc.
+
+
+## 2 ##
+
+g++ main.o -o my-app -> links the libraries -> my-app executable
+
+NOTE: 
+
+- C++ dynamic libraries are of kind lib<name-of-lib>.so (libsqlite3.so).
+Similarly static/archive are lib<name-of-lib>.a
+
+- To link external library use:
+g++ main.o -o my-app -l<name-of-lib> (without lib and, so or a).
+
+- To link external library out of standard path (/usr/lib/) use:
+g++ main.o -o my-app -L<ext-lib-install-path>/lib -l<name-of-lib>
+
+
+## 3 ##
+
+./my-app -> runs the executable -> output in console or external window, etc.
+
+NOTE: 
+
+- If external dynamic library is not in standard path (/usr/lib/) use:
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:<ext-lib-install-path>/lib && ./my-app
+
+- Generally, library files (.so and .a) are in lib folders, if not so adjust accordingly.
+
+Ref:
+* https://www.sfml-dev.org/tutorials/2.5/start-linux.php
+* https://iq.opengenus.org/create-archive-library-in-cpp
+* https://iq.opengenus.org/link-static-archive-file-in-gcc
+* http://www.yolinux.com/TUTORIALS/LibraryArchives-StaticAndDynamic.html
+
+
+PS:
+On Windows .a extension is .lib and .so is .dll 
+
+
+#### Generate dynamic library ####
+
+- g++ -fPIC -c library.cpp
+- g++ -shared library.o -o liblibrary.so
+
+
+#### Generate static library ####
+
+- g++ -c library.cpp -o librarystat.o
+- ar rcs liblibrarystat.a librarystat.o

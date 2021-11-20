@@ -56,7 +56,7 @@ def sum1(x, y):
   return x + y
 a = 2
 b = 3
-c = sum(a, b)
+c = sum1(a, b)
 print(c)
 
 x = 5
