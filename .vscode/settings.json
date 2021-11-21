@@ -5,14 +5,4 @@
     "cpp": "g++ -ggdb -fsanitize=address,undefined,leak -fno-omit-frame-pointer $fullFileName && ./a.out",
     "c": "gcc $fileName && ./a.out"
   },
-  "code-runner.enableAppInsights": false,
-  "git.ignoreLimitWarning": true,
-  "C_Cpp.dimInactiveRegions": true,
-  "python.linting.pylintEnabled": true,
-  "python.linting.enabled": true,
-  "C_Cpp.errorSquiggles": "Enabled",
-  "python.formatting.provider": "none",
-  "cmake.configureOnOpen": false,
-  "lldb.displayFormat": "auto",
-  "lldb.dereferencePointers": true,
 }
