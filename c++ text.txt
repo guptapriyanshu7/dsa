@@ -12,7 +12,7 @@ NOTE:
 - To include external header files out of standard path (/usr/include/) use:
 g++ -c main.cpp -I<ext-lib-install-path>/include
 
-- The include folder contains the .hpp files, which are the definitions for
+- The include folder contains the .hpp files, which are the declarations for
 the classes, functions, etc.
 
 

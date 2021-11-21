@@ -9,7 +9,8 @@ IndentWidth: 2
 TabWidth: 2
 ConstructorInitializerIndentWidth: 2
 ContinuationIndentWidth: 2
-AccessModifierOffset: -4
+AccessModifierOffset: 0
+IndentAccessModifiers: true
 
 # Include
 IncludeBlocks:   Regroup
