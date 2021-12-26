@@ -3,19 +3,18 @@
 using namespace std;
 
 vector<vector<int>> solve(int numRows) {
-	vector<vector<int>> ans(numRows);
-	for (size_t i = 0; i < numRows; i++) {
-		ans[i].resize(i + 1);
-		ans[i][0] = 1;
-		ans[i][i] = 1;
-		for (size_t j = 1; j < i; j++) {
-			ans[i][j] = ans[i - 1][j - 1] + ans[i - 1][j];
-		}
-	}
-	return ans;
+  vector<vector<int>> res(numRows);
+  for (size_t i = 0; i < numRows; i++) {
+    res[i].resize(i + 1);
+    for (size_t j = 0; j <= i; j++) {
+      if (j == 0 || j == i) res[i][j] = 1;
+      else res[i][j] = res[i - 1][j - 1] + res[i - 1][j];
+    }
+  }
+  return res;
 }
 
 int main() {
-	solve(5);
-	return 0;
+  solve(5);
+  return 0;
 }

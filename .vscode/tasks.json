@@ -114,7 +114,7 @@
         // "./a.out",
         "-fsanitize=address,undefined,leak",
         "-fno-omit-frame-pointer",
-        "./${relativeFile}",
+        "\"./${relativeFile}\"",
         "&&",
         "./a.out"
       ],
