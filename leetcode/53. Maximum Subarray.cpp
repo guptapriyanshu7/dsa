@@ -3,17 +3,15 @@
 using namespace std;
 
 int solve(vector<int>& nums) {
-  int global_max = INT_MIN, local_max = 0;
-  for (size_t i = 0; i < nums.size(); i++) {
-    local_max += nums[i];
-    if (local_max >= global_max) {
-      global_max = local_max;
-    }
-    if (local_max < 0) {
-      local_max = 0;
+  auto gmax = nums[0], lmax = nums[0];
+  for (size_t i = 1; i < nums.size(); i++) {
+    if (lmax > 0) lmax += nums[i];
+    else lmax = nums[i];
+    if (lmax > gmax) {
+      gmax = lmax;
     }
   }
-  return global_max;
+  return gmax;
 }
 
 int main() {

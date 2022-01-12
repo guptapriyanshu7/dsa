@@ -9,7 +9,7 @@ int solve(vector<int>& nums) {
 }
 
 int main() {
-  vector<int> nums{ 1,3,4,2,2 };
+  vector<int> nums{ 2, 3, 4, 1, 2 };
   cout << solve(nums);
   return 0;
 }

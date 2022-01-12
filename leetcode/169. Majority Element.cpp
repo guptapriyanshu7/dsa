@@ -3,16 +3,17 @@
 using namespace std;
 
 int solve(vector<int>& nums) {
-  int c = 0, m;
-  for (auto&& num : nums) {
-    if (c == 0) m = num;
-    m == num ? c++ : c--;
+  auto ans = nums[0], cnt = 1;
+  for (size_t i = 1; i < nums.size(); i++) {
+    if (nums[i] == ans) cnt++;
+    else cnt--;
+    if (cnt == 0) ans = nums[i], cnt = 1;
   }
-  return m;
+  return ans;
 }
 
 int main() {
-  vector<int> nums{ 7, 7, 7, 5, 1, 1, 7 };
+  vector<int> nums{ 2, 2, 1, 1, 1, 2, 2 };
   cout << solve(nums);
   return 0;
 }
