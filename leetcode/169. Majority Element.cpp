@@ -6,8 +6,8 @@ int solve(vector<int>& nums) {
   auto ans = nums[0], cnt = 1;
   for (size_t i = 1; i < nums.size(); i++) {
     if (nums[i] == ans) cnt++;
+    else if (cnt == 0) ans = nums[i], cnt = 1;
     else cnt--;
-    if (cnt == 0) ans = nums[i], cnt = 1;
   }
   return ans;
 }
