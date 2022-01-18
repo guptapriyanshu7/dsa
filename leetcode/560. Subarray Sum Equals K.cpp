@@ -3,21 +3,20 @@
 using namespace std;
 
 int solve(vector<int>& nums, int k) {
-  auto cnt = 0, cum = 0;
-  unordered_multiset<int> unms;
-  unms.insert(0);
-  for (size_t i = 0; i < nums.size(); i++) {
-    cum += nums[i];
-    auto req = cum - k;
-    if (unms.find(req) != unms.end())
-      cnt += unms.count(req);
-    unms.insert(cum);
+  auto res = 0, sum = 0;
+  unordered_map<int, int> mp;
+  mp.insert({ 0, 1 });
+  for (auto&& i: nums) {
+    sum += i;
+    if (mp.count(sum - k) != 0)
+      res += mp[sum - k];
+    mp[sum]++;
   }
-  return cnt;
+  return res;
 }
 
 int main() {
-  vector<int> nums{ 1,-1,0 };
+  vector<int> nums{ 1, -1, 0 };
   cout << solve(nums, 0);
   return 0;
 }

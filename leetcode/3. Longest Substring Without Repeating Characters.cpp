@@ -3,21 +3,21 @@
 using namespace std;
 
 int solve(string s) {
+  auto res = 0, i = 0, st = 0;
   unordered_map<char, int> m;
-  int l = 0, i = 0, g = 0;
   while (i < s.size()) {
-    if (m.count(s[i])) {
-      g = max(g, i - l);
-      l = max(l, m[s[i]] + 1);
+    if (m.count(s[i]) != 0) {
+      res = max(res, i - st);
+      st  = max(st, m[s[i]] + 1);
     }
     m[s[i]] = i;
     i++;
   }
-  g = max(g, i - l);
-  return g;
+  res = max(res, i - st);
+  return res;
 }
 
 int main() {
-  cout << solve("abba");
+  cout << solve("pwwkew");
   return 0;
 }
