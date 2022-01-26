@@ -3,44 +3,41 @@
 using namespace std;
 
 struct ListNode {
-  int val;
-  ListNode* next;
-  ListNode() : val(0), next(nullptr) {}
-  ListNode(int x) : val(x), next(nullptr) {}
+  int val{ 0 };
+  ListNode* next{ nullptr };
+  ListNode() = default;
+  explicit ListNode(int x) : val(x) {}
   ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
 
-ListNode* solve(ListNode* l1, ListNode* l2) {
-  auto head = new ListNode();
-  auto ans  = head;
-  while (l1 != nullptr && l2 != nullptr) {
-    if (l1->val <= l2->val) {
-      ans->next = l1;
-      l1        = l1->next;
-    } else {
-      ans->next = l2;
-      l2        = l2->next;
-    }
-    ans = ans->next;
-  }
-  ans->next = l1 ? l1 : l2;
-  return head->next;
-}
-
 ListNode* LinkedListFromArray(vector<int>& nums) {
-  int len = nums.size();
-  if (len == 0) return nullptr;
-  auto head = new ListNode(nums[0]), temp = head;
-  for (int i = 1; i < len; i++) {
-    auto node  = new ListNode(nums[i]);
-    temp->next = node;
-    temp       = node;
+  if (nums.empty()) return nullptr;
+  auto *head = new ListNode(nums[0]), *temp = head;
+  for (auto i = 1UL; i < nums.size(); i++) {
+    temp->next = new ListNode(nums[i]);
+    temp = temp->next;
   }
   return head;
 }
 
+ListNode* solve(ListNode* list1, ListNode* list2) {
+  auto *ans = new ListNode(), *temp = ans;
+  while (list1 != nullptr && list2 != nullptr) {
+    if (list1->val < list2->val) {
+      temp->next = list1;
+      list1 = list1->next;
+    } else {
+      temp->next = list2;
+      list2 = list2->next;
+    }
+    temp = temp->next;
+  }
+  temp->next = list1 == nullptr ? list2 : list1;
+  return ans->next;
+}
+
 int main() {
-  vector<int> l1{ 1, 2, 4 }, l2{ 1, 3, 4 };
-  solve(LinkedListFromArray(l1), LinkedListFromArray(l2));
+  vector<int> nums1{}, nums2{};
+  solve(LinkedListFromArray(nums1), LinkedListFromArray(nums2));
   return 0;
 }

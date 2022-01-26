@@ -11,39 +11,31 @@ struct ListNode {
 };
 
 ListNode* solve(ListNode* head) {
-  ListNode* prev = nullptr, * curr = head;
-  while (curr != nullptr) {
-    auto temp = curr->next;
-    curr->next = prev;
-    prev = curr;
-    curr = temp;
-  }
-  return prev;
-}
-
-ListNode* solveR(ListNode* head) {
-  if (head == nullptr || head->next == nullptr)
-    return head;
-  auto last = solveR(head->next);
+  if (head == nullptr || head->next == nullptr) return head;
+  auto* last       = solve(head->next);
   head->next->next = head;
-  head->next = nullptr;
+  head->next       = nullptr;
   return last;
 }
 
 ListNode* LinkedListFromArray(vector<int>& nums) {
-  int len = nums.size();
-  if (len == 0) return nullptr;
-  auto head = new ListNode(nums[0]), temp = head;
-  for (int i = 1; i < len; i++) {
-    auto node = new ListNode(nums[i]);
-    temp->next = node;
-    temp = node;
+  if (nums.empty()) return nullptr;
+  auto *head = new ListNode(nums[0]), *temp = head;
+  for (auto i = 1UL; i < nums.size(); i++) {
+    temp->next = new ListNode(nums[i]);
+    temp       = temp->next;
   }
   return head;
 }
 
 int main() {
-  vector<int> nums{};
-  solveR(LinkedListFromArray(nums));
+  vector<int> nums{ 1, 2, 3, 4, 5 };
+  auto* head = solve(LinkedListFromArray(nums));
+  while (head != nullptr) {
+    cout << head->val << " ";
+    auto* temp = head;
+    head       = head->next;
+    delete temp;
+  }
   return 0;
 }

@@ -68,7 +68,7 @@ BraceWrapping:
   SplitEmptyNamespace: false
   
 # Align
-AlignConsecutiveAssignments: Consecutive
+# AlignConsecutiveAssignments: Consecutive
 AlignConsecutiveBitFields: true
 AlignConsecutiveDeclarations: None
 AlignConsecutiveMacros: AcrossEmptyLinesAndComments

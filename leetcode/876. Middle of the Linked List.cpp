@@ -11,15 +11,13 @@ struct ListNode {
 };
 
 ListNode* solve(ListNode* head) {
-  int i = 0;
-  auto temp = head;
+  auto cnt   = 0;
+  auto* temp = head;
   while (temp != nullptr) {
-    i++;
+    cnt++;
     temp = temp->next;
   }
-  i /= 2;
-  while (i--)
-    head = head->next;
+  for (auto i = 0; i < cnt / 2; i++) head = head->next;
   return head;
 }
 
@@ -28,15 +26,15 @@ ListNode* LinkedListFromArray(vector<int>& nums) {
   if (len == 0) return nullptr;
   auto head = new ListNode(nums[0]), temp = head;
   for (int i = 1; i < len; i++) {
-    auto node = new ListNode(nums[i]);
+    auto node  = new ListNode(nums[i]);
     temp->next = node;
-    temp = node;
+    temp       = node;
   }
   return head;
 }
 
 int main() {
-  vector<int> nums{ 1,2,3,4,5,6 };
+  vector<int> nums{ 1, 2, 3, 4, 5, 6 };
   auto node = solve(LinkedListFromArray(nums));
   while (node != nullptr) {
     cout << node->val << " ";
