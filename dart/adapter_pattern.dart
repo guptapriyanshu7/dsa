@@ -36,19 +36,19 @@ class SquarePegAdapter extends RoundPeg {
 }
 
 void main() {
-  final hole = new RoundHole(5.0);
+  const hole = RoundHole(5.0);
 
-  final round_peg = new RoundPeg(5.0);
+  const round_peg = RoundPeg(5.0);
 
   print(hole.fits(round_peg));
 
-  final small_sqpeg = new SquarePeg(5.0);
-  final large_sqpeg = new SquarePeg(10.0);
+  const small_sqpeg = SquarePeg(5.0);
+  const large_sqpeg = SquarePeg(10.0);
 
   // hole.fits(small_sqpeg);
 
-  final small_sqpeg_adapter = new SquarePegAdapter(small_sqpeg);
-  final large_sqpeg_adapter = new SquarePegAdapter(large_sqpeg);
+  const small_sqpeg_adapter = SquarePegAdapter(small_sqpeg);
+  const large_sqpeg_adapter = SquarePegAdapter(large_sqpeg);
 
   print(hole.fits(small_sqpeg_adapter));
   print(hole.fits(large_sqpeg_adapter));
